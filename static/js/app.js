@@ -101,10 +101,11 @@ app.controller('translatrController', function ($scope, $http, $timeout) {
 
 		$scope.filteredLocales = {};
 		angular.copy($scope.locales, $scope.filteredLocales);
-		$scope.settings = {};
-		$scope.settings.selectedLocales = {};
+		$scope.settings = {
+      selectedLocales: {},
+		  isLangUagePanelExpandable: true,
+    };
 		$scope.jsonFormattedOutput = [];
-		$scope.settings.isLangUagePanelExpandable = true;
 
 		$('#text').focus();
 
@@ -116,12 +117,9 @@ app.controller('translatrController', function ($scope, $http, $timeout) {
 		$scope.validateAndTranslate = function () {
 			// List of selected locles, send them to backend, `l` to optimize request
 			var l = [];
-			var params = {};
 
 			angular.forEach($scope.settings.selectedLocales, function (value, key) {
-				if (value) {
-					l.push(key);
-				}
+				if (value) { l.push(key); }
 			});
 			$scope.isPositive = false;
 
@@ -140,12 +138,9 @@ app.controller('translatrController', function ($scope, $http, $timeout) {
 			$scope.jsonFormattedOutput = [];
 			$scope.isFetchingData = true;
 
-			params.userText = $scope.userText;
-			params.l = l;
-
 			$scope.isPositive = true;
 			$scope.errorText = 'Please wait, crunching latest data.';
-			$http.post('', params).then(function (config) {
+			$http.post('', {userText: $scope.userText, l: l}).then(function (config) {
 				$scope.errorText = '';
 				$scope.isFetchingData = false;
 				$scope.translatedText = config.data.translatedText;
@@ -168,13 +163,12 @@ app.controller('translatrController', function ($scope, $http, $timeout) {
 
 		$scope.generateJsonFormattedOutput = function (data) {
 			var jsonFormattedOutput = [];
-			var obj = {};
 			angular.forEach(data, function (v, k) {
-				obj = {};
-				obj.locale = k;
-				obj.country = $scope.locales[k];
-				obj.string = v;
-				jsonFormattedOutput.push(obj);
+				jsonFormattedOutput.push({
+					locale: k,
+					country: $scope.locales[k],
+					string: v,
+				});
 			});
 			$scope.jsonFormattedOutput = JSON.stringify(jsonFormattedOutput);
 		};
@@ -204,23 +198,16 @@ app.controller('translatrController', function ($scope, $http, $timeout) {
 	    	e.stopPropagation();
 
 	    	angular.forEach($scope.locales, function (v, k) {
-	    		if ($scope.isSelectAllClicked) {
-	    			$scope.settings.selectedLocales[k] = false;
-	    		} else {
-	    			$scope.settings.selectedLocales[k] = true;
-	    		}
+          $scope.settings.selectedLocales[k] = !$scope.isSelectAllClicked;
 	    	});
 	    	$scope.isSelectAllClicked = !$scope.isSelectAllClicked;
 	    };
 
 	    $scope.$watch('search', function (newSearchTerm, oldSearchTerm) {
-	    	//if (!angular.isDefined(newSearchTerm)) { return; }
-
 	    	angular.copy($scope.locales, $scope.filteredLocales);
 			angular.forEach($scope.locales, function (v, k) {
-				v = v.toLowerCase();
 				newSearchTerm = newSearchTerm && newSearchTerm.toLowerCase();
-				if (newSearchTerm && v.indexOf(newSearchTerm) === -1) {
+				if (newSearchTerm && v.toLowerCase().indexOf(newSearchTerm) === -1) {
 					delete $scope.filteredLocales[k];
 				}
 			});
