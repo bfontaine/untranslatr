@@ -34,40 +34,41 @@
 						<div class="row">
 							<div class="input-field col s12">
 								<textarea id="text" class="materialize-textarea" name="text" ng-model="userText"></textarea>
-								<label for="text">Enter your text here</label>
 							</div>
 						</div>
 					</div>
 
-          {# Turn off jinja2 templating here #}
 					{% raw %}
 					<div style="border: 1px solid #ddd;">
-						<div class="collapsible-header" ng-click="settings.isLangUagePanelExpandable = !settings.isLangUagePanelExpandable;">
+						<div class="collapsible-header">
 							<strong class="blue-text" style="margin-bottom:5px;font-size:24px;">Select Languages</strong>
 							<a style="float: right;" ng-click="selectAll($event, isSelectAllClicked)">
 								{{ isSelectAllClicked ? 'Unselect all' : 'Select all' }}
 							</a>
-							<span ng-class="{'arrow-up': settings.isLangUagePanelExpandable,'arrow-down': !settings.isLangUagePanelExpandable}"></span>
 						</div>
+          {% endraw %}
 
-						<div class="row  margin--top  padding-sides--15" ng-class="{'hidden': !settings.isLangUagePanelExpandable}">
+						<div class="row margin-top padding-sides--15">
 							<div class="col s12" style="margin-left:10px;">
 								<input id="search" type="search" ng-model="search" placeholder="Search languages..." style="text-align: center;" title="Filter the languages">
 		        				<label for="search"></label>
 		        			</div>
 
-							<div ng-repeat="(localeName, localeValue) in filteredLocales" class="col  country-column" style="margin-top:5px;width: 20%;">
+							<div ng-repeat="(localeName, localeValue) in filteredLocales" class="col  language-column" style="margin-top:5px;width: 20%;">
+					{% raw %}
 								<input type="checkbox" id="{{ localeName }}" ng-model="settings.selectedLocales[localeName]"/>
-								<label for="{{ localeName }}" class="country-name" ng-class="{'text--selected': settings.selectedLocales[localeName]}">{{ localeValue }}</label>
+								<label for="{{ localeName }}" class="language-name" ng-class="{'text--selected': settings.selectedLocales[localeName]}">{{ localeValue }}</label>
 							</div>
 						</div>
+          {% endraw %}
 					</div>
 
 					<div class="center margin-top margin-bottom">
+					{% raw %}
 						<div class="text-lighten-1" stly="display:block" ng-class="{'red-text': !isPositive, 'blue-text': isPositive }">{{ errorText }}</div>
+          {% endraw %}
 						<br />
-				{% endraw %}
-						<div class="loader  hidden" style="text-align:center;">
+						<div class="loader hidden" style="text-align:center;">
 							<div class="preloader-wrapper big active">
 								<div class="spinner-layer spinner-blue-only">
 									<div class="circle-clipper left">
@@ -91,14 +92,14 @@
 				<h5 ng-cloak ng-show="translatedText" class="blue-text  text-lighten-1" style="margin-top:15px;border-bottom: 1px solid #ccc;">
 					Translated strings for the selected languages:
 				</h5>
-        {% raw %}
 				<div ng-cloak ng-show="translatedText && Object.keys(translatedText).length" style="background: #EEE; padding: 10px;">
 					<div id="output" ng-repeat="(locale, translatedString) in translatedText" class="margin-top">
+        {% raw %}
 						<strong>{{ locales[locale] }}: </strong>
 						<span ng-click="highlightTranslatedString(locale)" id="selectedText-{{ locale }}">{{ translatedString }}</span>
+				{% endraw %}
 					</div>
 				</div>
-				{% endraw %}
 			</div>
 		</div>
 	</div>

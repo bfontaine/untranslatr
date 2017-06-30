@@ -102,7 +102,6 @@ app.controller('translatrController', function ($scope, $http, $timeout) {
 		angular.copy($scope.locales, $scope.filteredLocales);
 		$scope.settings = {
       selectedLocales: {},
-		  isLangUagePanelExpandable: true,
     };
 
 		$('#text').focus();

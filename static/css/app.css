@@ -2,10 +2,6 @@
   width: 99%;
 }
 
-.input-field label {
-  top: 0.5rem;
-}
-
 [type="checkbox"]:checked + label:before {
   border-bottom: 2px solid #2196f3;
   border-right: 2px solid #2196f3;
@@ -27,7 +23,7 @@ input[type=search]:focus:not([readonly]) {
   color: #2196f3;
 }
 
-.margin--top {
+.margin-top {
   margin-top: 20px;
 }
 .margin-bottom {
@@ -41,30 +37,6 @@ input[type=search]:focus:not([readonly]) {
   padding-right: 15px;
   padding-left: 15px;
 }
-.arrow-up {
-  width: 0;
-  height: 0;
-  border-left: 7px solid transparent;
-  border-right: 7px solid transparent;
-  border-bottom: 7px solid #aaa;
-  position: absolute;
-  margin-top: 20px;
-  margin-left: 10px;
-}
-
-.arrow-down {
-  width: 0;
-  height: 0;
-  border-left: 7px solid transparent;
-  border-right: 7px solid transparent;
-  border-top: 7px solid #aaa;
-  position: absolute;
-  margin-top: 20px;
-  margin-left: 10px;
-}
-.margin-top {
-  margin-top: 20px;
-}
 
 .btn-disabled {
   box-shadow: none;
@@ -72,26 +44,9 @@ input[type=search]:focus:not([readonly]) {
   cursor: default;
 }
 
-.arrow-up {
-  width: 0;
-  height: 0;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-bottom: 5px solid #444;
-  position: absolute;
-}
-
-.json-output {
-  height: 45px;
-}
-
 textarea {
   width: 88%;
   resize: none;
-}
-
-.hidden {
-  display: none;
 }
 
 #details {
@@ -101,13 +56,13 @@ textarea {
 }
 
 @media only screen and (max-width : 700px) {
-  .country-name {
+  .language-name {
     font-size: 10px !important;
   }
   [type="checkbox"] + label {
     padding-left: 25px;
   }
-  .country-column {
+  .language-column {
     width: 30% !important;
   }
 }
