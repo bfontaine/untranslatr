@@ -3,7 +3,6 @@
 <head>
 	<title>Untranslatr | Home</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
 	<link rel="shortcut icon" type="image/x-icon" href="{{ url_for("static", filename="images/favicon.ico") }}">
 	<meta name="theme-color" content="#2196F3">
 	<meta charset="UTF-8">
@@ -11,123 +10,8 @@
 	<meta name="author" content="Baptiste Fontaine">
 
 	<link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="css/vendor/materialize.min.css") }}">
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<style type="text/css">
-
-		.container {
-			width: 99%;
-		}
-
-		.input-field label {
-			top: 0.5rem;
-		}
-
-		[type="checkbox"]:checked + label:before {
-			border-bottom: 2px solid #2196f3;
-			border-right: 2px solid #2196f3;
-		}
-		textarea.materialize-textarea:focus:not([readonly]) + label {
-			color: #2196f3;
-		}
-		textarea.materialize-textarea:focus:not([readonly]) {
-			border-bottom: 1px solid #2196f3;
-			box-shadow: 0 1px 0 0 #2196f3;
-		}
-
-		input[type=search]:focus:not([readonly]) {
-		    border-bottom: 1px solid #2196f3;
-    		box-shadow: 0 1px 0 0 #2196f3;
-		}
-
-		.text--selected {
-			color: #2196f3;
-		}
-
-		.margin--top {
-			margin-top: 20px;
-		}
-		.margin-bottom {
-			margin-bottom: 20px;
-		}
-
-		.hidden {
-			display: none;
-		}
-		.padding-sides--15 {
-			padding-right: 15px;
-			padding-left: 15px;
-		}
-		.arrow-up {
-			width: 0;
-			height: 0;
-			border-left: 7px solid transparent;
-			border-right: 7px solid transparent;
-			border-bottom: 7px solid #aaa;
-			position: absolute;
-			margin-top: 20px;
-			margin-left: 10px;
-		}
-
-		.arrow-down {
-			width: 0;
-			height: 0;
-			border-left: 7px solid transparent;
-			border-right: 7px solid transparent;
-			border-top: 7px solid #aaa;
-			position: absolute;
-			margin-top: 20px;
-			margin-left: 10px;
-		}
-		.margin-top {
-			margin-top: 20px;
-		}
-
-		.btn-disabled {
-			box-shadow: none;
-			color: #FFF;
-			cursor: default;
-		}
-
-		.arrow-up {
-			width: 0;
-			height: 0;
-			border-left: 5px solid transparent;
-			border-right: 5px solid transparent;
-			border-bottom: 5px solid #444;
-			position: absolute;
-		}
-
-		.json-output {
-			height: 45px;
-		}
-
-		textarea {
-			width: 88%;
-			resize: none;
-		}
-
-		.hidden {
-			display: none;
-		}
-
-		#details {
-			color: #666;
-			font-size: 18px;
-			line-height: 28px;
-		}
-
-		@media only screen and (max-width : 700px) {
-			.country-name {
-				font-size: 10px !important;
-			}
-			[type="checkbox"] + label {
-				padding-left: 25px;
-			}
-			.country-column {
-				width: 30% !important;
-			}
-		}
-	</style>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="css/app.css") }}">
 </head>
 <body ng-app="translatr">
 	<div class="container" ng-controller="translatrController">
@@ -136,15 +20,15 @@
 				<h3 class="center  blue white-text">Untranslatr</h3>
 				<div id="details">
           <p>Untranslatr is a fork of
-          <a href="http://translatr.varunmalhotra.xyz/">Translatr</a> that does
-          the opposite of it: instead of translating a piece of text from one
-          language to multiple ones, it translate that same piece of text from
-          multiple languages into one: English.</p>
-          </div>
-          </div>
+          <a href="http://translatr.varunmalhotra.xyz/" rel="external">Translatr</a>
+          that does the opposite of it: instead of translating a piece of text
+          from one language to multiple ones, it translate that same piece of text
+          from multiple languages into one: English.</p>
+        </div>
+      </div>
 			<div class="col s12 m8 l9">
 				<form ng-cloak ng-submit="validateAndTranslate()">
-					<!-- To turn off jinja2 templating here -->
+          {# Turn off jinja2 templating here #}
 					{% raw %}
 					<h4 class="center" style="color:#777;">Translate to multiple languages at once</h4>
 					<div style="margin-top:25px;">
@@ -182,7 +66,7 @@
 					<div class="center margin-top margin-bottom">
 						<div class="text-lighten-1" stly="display:block" ng-class="{'red-text': !isPositive, 'blue-text': isPositive }">{{ errorText }}</div>
 						<input type="checkbox" id="json-formatted-output" ng-model="settings.isJsonFormattedOutput"/>
-						<label for="json-formatted-output" class="country-name">JSON formatted output</label>
+						<label for="json-formatted-output" class="country-name">JSON-formatted output</label>
 						<br />
 						<div class="loader  hidden" style="text-align:center;">
 							<div class="preloader-wrapper big active">
