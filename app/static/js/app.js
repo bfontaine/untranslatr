@@ -106,56 +106,11 @@ app.controller('translatrController', function ($scope, $http, $timeout) {
 		$scope.jsonFormattedOutput = [];
 		$scope.settings.isLangUagePanelExpandable = true;
 
-		$scope.utils = {
-			/**
-			 * Get local storage data decode it before using it
-			 * @return {String}
-			 */
-			getLocalStorageData: function () {
-				var data;
-				if (localStorage.getItem('translatr_app_data')) {
-					data = atob(localStorage.getItem('translatr_app_data'));
-					return JSON.parse(data);
-				}
-				return false;
-			},
-			/**
-			 * Save data to local storage
-			 * @param {String/Number}  data
-			 */
-			setLocalStorageData: function (data) {
-				localStorage.setItem('translatr_app_data', btoa(JSON.stringify(data)));
-			}
-		};
-
 		$('#text').focus();
-
-		$scope.storedData = $scope.utils.getLocalStorageData();
-		$scope.loadStoredData = function () {
-			// Reset all checkboxes
-			$scope.settings.selectedLocales = {};
-			$scope.storedData = $scope.utils.getLocalStorageData();
-			var i;
-			$scope.userText = $scope.storedData.t;
-			for (i = 0; i < $scope.storedData.l.length; i++) {
-				$scope.settings.selectedLocales[$scope.storedData.l[i]] = true;
-			};
-
-			$scope.isStoredDataLoaded = true;
-		};
-
-		$scope.getSelectedLocales = function () {
-			var selectedlocales = [];
-			angular.forEach($scope.settings.selectedLocales, function (v, k) {
-				if (v) { selectedlocales.push(k); }
-			});
-			return selectedlocales;
-		};
 
 		$scope.resetInput = function () {
 			$scope.userText = '';
 			$scope.settings.selectedLocales = {};
-			$scope.isStoredDataLoaded = !$scope.isStoredDataLoaded;
 		};
 
 		$scope.validateAndTranslate = function () {
@@ -193,13 +148,11 @@ app.controller('translatrController', function ($scope, $http, $timeout) {
 			$http.post('', params).then(function (config) {
 				$scope.errorText = '';
 				$scope.isFetchingData = false;
-				$scope.isStoredDataLoaded = true;
 				$scope.translatedText = config.data.translatedText;
 				if ($scope.settings.isJsonFormattedOutput) {
 					$scope.generateJsonFormattedOutput($scope.translatedText);
 				}
 
-				$scope.utils.setLocalStorageData({t: $scope.userText, l: $scope.getSelectedLocales()});
 				$timeout(function () {
 					$('body, html').animate({scrollTop: document.getElementById('output').offsetTop}, 'slow');
 				}, 0);

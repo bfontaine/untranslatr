@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Translatr | Home</title>
-	<!--Let browser know website is optimized for mobile-->
+	<title>Untranslatr | Home</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 	<link rel="shortcut icon" type="image/x-icon" href="../static/images/favicon.ico">
 	<meta name="theme-color" content="#2196F3">
 	<meta charset="UTF-8">
-	<meta name="description" content="Translate to multiple languages at once">
-	<meta name="keywords" content="Translatr, AngularJS, Materialize, Flask, HTML, CSS, JavaScript">
-	<meta name="author" content="Varun Malhotra">
+	<meta name="description" content="Translate from multiple languages at once">
+	<meta name="author" content="Baptiste Fontaine">
 
 	<link rel="stylesheet" type="text/css" href="../static/css/materialize.css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -116,7 +114,6 @@
 			color: #666;
 			font-size: 18px;
 			line-height: 28px;
-			text-align: justify;
 		}
 
 		@media only screen and (max-width : 700px) {
@@ -130,122 +127,20 @@
 				width: 30% !important;
 			}
 		}
-
-		.github-corner:hover .octo-arm {
-			animation: octocat-wave 1000ms ease-in-out infinite;
-		}
-
-		@keyframes octocat-wave {
-			0%, 100% {
-				transform:rotate(0);
-			} 20%, 60% {
-				transform:rotate(-25deg);
-			} 40%, 80% {
-				transform:rotate(10deg);
-			}
-		}
-
-		@media (max-width:500px) {
-			.github-corner:hover .octo-arm {
-				animation: none;
-			}
-			.github-corner .octo-arm {
-				animation: octocat-wave 560ms ease-in-out;
-			}
-		}
-
-		.social-icon {
-			margin-top: 50px;
-			margin-left: 20px;
-			fill: #C0C0C0;
-			transition: all 0.5s ease 0.2s;
-		}
-
-
-		.social-icon.linkedin:hover {
-			fill: #65B7D2;
-			text-decoration: none;
-		}
-		.social-icon.twitter:hover {
-		    fill: #52C7FF;
-		    text-decoration: none;
-		}
-
-		.social-icon.stackoverflow:hover {
-		    fill: #FF8A1B;
-		    text-decoration: none;
-		}
-
-		.social-icon.github:hover {
-		    fill: #333333;
-		    text-decoration: none;
-		}
 	</style>
 </head>
 <body ng-app="translatr">
-	<a href="https://github.com/softvar/translatr" class="github-corner" target="_blank" title="Star me on Github">
-		<svg width="80px" height="80px" viewBox="0 0 250 250" style="fill:#70B7FD; color:#fff; position: absolute; top: 0; border: 0; right: 0;">
-			<path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
-			<path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
-			<path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path>
-		</svg>
-	</a>
 	<div class="container" ng-controller="translatrController">
 		<div class="row">
 			<div class="col s12 m4 l3" style="background: #F5F5F5;">
-				<h3 class="center  blue white-text">Translatr</h3>
+				<h3 class="center  blue white-text">Untranslatr</h3>
 				<div id="details">
-                    Translatr is a cross platform, online translation tool.
-                    It helps in translating a text or a short paragraph into different multiple languages.
-
-                    <br /><br />
-                    <strong>Who is this for?</strong>
-                    <br />
-                    There's no such free online API which fulfils the desired requirements.
-                    Google Translate API is not free and this tool fetches result from it's older API only and parses the data accordingly.
-
-                    <br /><br />
-                    <strong>Features:</strong>
-                    <ol>
-                    	<li>It helps in translating multiple languages at once. The service translates a string one by one and then outputs the desired output once all being done.</li>
-                    	<li>It can be used as an API for small personal needs.</li>
-                        <li>It stores current options in LocalStorage thereby speeding usage for later.</li>
-                        <li>Directly copy the JSON formatted response to your clipboard.</li>
-                    </ol>
-
-                    <div style="color:#222;">
-                    	<strong>Note: </strong>Please don't consider it to be a full fledged API. This project is meant only for small and tedious translation tasks.
-                   	</div>
-
-                    <br />
-                    This app is developed using Open-Source technologies. A micro 'web'-framework for  python - <a href="http://flask.pocoo.org/">FLASK</a> is used for serving requests.
-					For the front-end part, AngularJs is used along with <a href="http://materializecss.com/">Materialize framework</a>, a modern responsive framework based on Material Design.
-					<div style="text-align:center">
-						<a href="https://twitter.com/s0ftvar">
-							<svg xmlns="http://www.w3.org/2000/svg" width="30" height="50" viewBox="0 0 1664 1664" version="1.1" class="social-icon twitter">
-							   <path transform="scale(1,-1) translate(0,-1024)" d="M44 145q35 -4 78 -4q225 0 401 138q-105 2 -188 64.5t-114 159.5q33 -5 61 -5q43 0 85 11q-112 23 -185.5 111.5t-73.5 205.5v4q68 -38 146 -41q-66 44 -105 115t-39 154q0 88 44 163q121 -149 294.5 -238.5t371.5 -99.5q-8 38 -8 74q0 134 94.5 228.5t228.5 94.5 q140 0 236 -102q109 21 205 78q-37 -115 -142 -178q93 10 186 50q-67 -98 -162 -167q1 -14 1 -42q0 -130 -38 -259.5t-115.5 -248.5t-184.5 -210.5t-258 -146t-323 -54.5q-271 0 -496 145z"></path>
-							</svg>
-						</a>
-
-						<a href="https://github.com/softvar">
-							<svg xmlns="http://www.w3.org/2000/svg" width="30" height="50" viewBox="0 0 1664 1664" version="1.1" class="social-icon github">
-							   <path transform="scale(1,-1) translate(0,-1024)" d="M0 640q0 209 103 385.5t279.5 279.5t385.5 103t385.5 -103t279.5 -279.5t103 -385.5q0 -251 -146.5 -451.5t-378.5 -277.5q-27 -5 -39.5 7t-12.5 30v211q0 97 -52 142q57 6 102.5 18t94 39t81 66.5t53 105t20.5 150.5q0 121 -79 206q37 91 -8 204q-28 9 -81 -11t-92 -44 l-38 -24q-93 26 -192 26t-192 -26q-16 11 -42.5 27t-83.5 38.5t-86 13.5q-44 -113 -7 -204q-79 -85 -79 -206q0 -85 20.5 -150t52.5 -105t80.5 -67t94 -39t102.5 -18q-40 -36 -49 -103q-21 -10 -45 -15t-57 -5t-65.5 21.5t-55.5 62.5q-19 32 -48.5 52t-49.5 24l-20 3 q-21 0 -29 -4.5t-5 -11.5t9 -14t13 -12l7 -5q22 -10 43.5 -38t31.5 -51l10 -23q13 -38 44 -61.5t67 -30t69.5 -7t55.5 3.5l23 4q0 -38 0.5 -89t0.5 -54q0 -18 -13 -30t-40 -7q-232 77 -378.5 277.5t-146.5 451.5z"></path>
-							</svg>
-						</a>
-
-						<a href="https://www.linkedin.com/in/softvar">
-							<svg xmlns="http://www.w3.org/2000/svg" width="30" height="50" viewBox="0 0 1664 1664" version="1.1" class="social-icon linkedin">
-							   <path transform="scale(1,-1) translate(0,-1024)" d="M0 1217q0 74 51.5 122.5t134.5 48.5t133 -48.5t51 -122.5q1 -73 -50.5 -122t-135.5 -49h-2q-82 0 -132 49t-50 122zM19 -80v991h330v-991h-330zM531 -80q2 399 2 647t-1 296l-1 48h329v-144h-2q20 32 41 56t56.5 52t87 43.5t114.5 15.5q171 0 275 -113.5t104 -332.5v-568 h-329v530q0 105 -40.5 164.5t-126.5 59.5q-63 0 -105.5 -34.5t-63.5 -85.5q-11 -30 -11 -81v-553h-329z"></path>
-							</svg>
-						</a>
-
-						<a href="http://stackoverflow.com/users/2494535/softvar">
-							<svg xmlns="http://www.w3.org/2000/svg" width="30" height="50" viewBox="0 0 1664 1664" version="1.1" class="social-icon stackoverflow">
-							   <path transform="scale(1,-1) translate(0,-1024)" d="M928 135v-151l-707 -1v151zM1169 481v-701l-1 -35v-1h-1132l-35 1h-1v736h121v-618h928v618h120zM241 393l704 -65l-13 -150l-705 65zM309 709l683 -183l-39 -146l-683 183zM472 1058l609 -360l-77 -130l-609 360zM832 1389l398 -585l-124 -85l-399 584zM1285 1536 l121 -697l-149 -26l-121 697z"></path>
-							</svg>
-						</a>
-					</div>
-                </div>
+          Untranslatr is a fork of
+          <a href="http://translatr.varunmalhotra.xyz/">Translatr</a> that does
+          the opposite of it: instead of translating a piece of text from one
+          language to multiple ones, it translate that same piece of text from
+          multiple languages to one: English.
+        </div>
 			</div>
 			<div class="col s12 m8 l9">
 				<form ng-cloak ng-submit="validateAndTranslate()">
@@ -253,10 +148,6 @@
 					{% raw %}
 					<h4 class="center" style="color:#777;">Translate to multiple languages at once</h4>
 					<div style="margin-top:25px;">
-						<div style="float:right;margin-top:10px;">
-							<a href="" class="text-blue" ng-show="storedData && !isStoredDataLoaded" ng-click="loadStoredData()">Load previous data</a>
-							<a href="" class="text-blue" ng-show="isStoredDataLoaded" ng-click="resetInput()">Reset data</a>
-						</div>
 						<strong class="blue-text" style="margin-bottom:5px;font-size:24px;">Enter Text</strong>
 						<div class="row">
 							<div class="input-field col s12">
@@ -347,53 +238,6 @@
 				</div>
 
 				{% endraw %}
-				<div style="margin-top:100px;" id="disqus_thread"></div>
-				<script>
-				/**
-				* RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-				* LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
-				*/
-				/*
-				var disqus_config = function () {
-				this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
-				this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-				};
-				*/
-				(function() { // DON'T EDIT BELOW THIS LINE
-				var d = document, s = d.createElement('script');
-
-				s.src = '//translatr.disqus.com/embed.js';
-
-				s.setAttribute('data-timestamp', +new Date());
-				(d.head || d.body).appendChild(s);
-				})();
-				</script>
-				<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-				<div style="text-align:center">
-					<a href="https://twitter.com/s0ftvar">
-						<svg xmlns="http://www.w3.org/2000/svg" width="30" height="50" viewBox="0 0 1664 1664" version="1.1" class="social-icon twitter">
-						   <path transform="scale(1,-1) translate(0,-1024)" d="M44 145q35 -4 78 -4q225 0 401 138q-105 2 -188 64.5t-114 159.5q33 -5 61 -5q43 0 85 11q-112 23 -185.5 111.5t-73.5 205.5v4q68 -38 146 -41q-66 44 -105 115t-39 154q0 88 44 163q121 -149 294.5 -238.5t371.5 -99.5q-8 38 -8 74q0 134 94.5 228.5t228.5 94.5 q140 0 236 -102q109 21 205 78q-37 -115 -142 -178q93 10 186 50q-67 -98 -162 -167q1 -14 1 -42q0 -130 -38 -259.5t-115.5 -248.5t-184.5 -210.5t-258 -146t-323 -54.5q-271 0 -496 145z"></path>
-						</svg>
-					</a>
-
-					<a href="https://github.com/softvar">
-						<svg xmlns="http://www.w3.org/2000/svg" width="30" height="50" viewBox="0 0 1664 1664" version="1.1" class="social-icon github">
-						   <path transform="scale(1,-1) translate(0,-1024)" d="M0 640q0 209 103 385.5t279.5 279.5t385.5 103t385.5 -103t279.5 -279.5t103 -385.5q0 -251 -146.5 -451.5t-378.5 -277.5q-27 -5 -39.5 7t-12.5 30v211q0 97 -52 142q57 6 102.5 18t94 39t81 66.5t53 105t20.5 150.5q0 121 -79 206q37 91 -8 204q-28 9 -81 -11t-92 -44 l-38 -24q-93 26 -192 26t-192 -26q-16 11 -42.5 27t-83.5 38.5t-86 13.5q-44 -113 -7 -204q-79 -85 -79 -206q0 -85 20.5 -150t52.5 -105t80.5 -67t94 -39t102.5 -18q-40 -36 -49 -103q-21 -10 -45 -15t-57 -5t-65.5 21.5t-55.5 62.5q-19 32 -48.5 52t-49.5 24l-20 3 q-21 0 -29 -4.5t-5 -11.5t9 -14t13 -12l7 -5q22 -10 43.5 -38t31.5 -51l10 -23q13 -38 44 -61.5t67 -30t69.5 -7t55.5 3.5l23 4q0 -38 0.5 -89t0.5 -54q0 -18 -13 -30t-40 -7q-232 77 -378.5 277.5t-146.5 451.5z"></path>
-						</svg>
-					</a>
-
-					<a href="https://www.linkedin.com/in/softvar">
-						<svg xmlns="http://www.w3.org/2000/svg" width="30" height="50" viewBox="0 0 1664 1664" version="1.1" class="social-icon linkedin">
-						   <path transform="scale(1,-1) translate(0,-1024)" d="M0 1217q0 74 51.5 122.5t134.5 48.5t133 -48.5t51 -122.5q1 -73 -50.5 -122t-135.5 -49h-2q-82 0 -132 49t-50 122zM19 -80v991h330v-991h-330zM531 -80q2 399 2 647t-1 296l-1 48h329v-144h-2q20 32 41 56t56.5 52t87 43.5t114.5 15.5q171 0 275 -113.5t104 -332.5v-568 h-329v530q0 105 -40.5 164.5t-126.5 59.5q-63 0 -105.5 -34.5t-63.5 -85.5q-11 -30 -11 -81v-553h-329z"></path>
-						</svg>
-					</a>
-
-					<a href="http://stackoverflow.com/users/2494535/softvar">
-						<svg xmlns="http://www.w3.org/2000/svg" width="30" height="50" viewBox="0 0 1664 1664" version="1.1" class="social-icon stackoverflow">
-						   <path transform="scale(1,-1) translate(0,-1024)" d="M928 135v-151l-707 -1v151zM1169 481v-701l-1 -35v-1h-1132l-35 1h-1v736h121v-618h928v618h120zM241 393l704 -65l-13 -150l-705 65zM309 709l683 -183l-39 -146l-683 183zM472 1058l609 -360l-77 -130l-609 360zM832 1389l398 -585l-124 -85l-399 584zM1285 1536 l121 -697l-149 -26l-121 697z"></path>
-						</svg>
-					</a>
-				</div>
 			</div>
 		</div>
 	</div>
@@ -404,61 +248,6 @@
 	<script type="text/javascript" src="../static/js/vendor/angular-1.4.min.js"></script>
 
 	<script type="text/javascript" src="../static/js/vendor/clipboard.min.js"></script>
-	<script type="text/javascript" src="../static/js/vendor/superplaceholder.min.js"></script>
-	<script type="text/javascript">
-		superplaceholder({
-			el: document.getElementById('text'),
-			sentences: [
-				'Translatr is a simple service for your daily needs',
-				'Enter your text here',
-				'Select multiple languages at once',
-				'Option to have JSON formatted output to be used in projects',
-				'Wow! Simple to use, ready to serve',
-				'Example 1: Will you marry me? lol',
-				'Example 2: Damn! What the hell I just saw right now! Seriously?'
-			],
-			options: {
-				letterDelay: 50,
-				sentenceDelay: 400,
-				startOnFocus: false,
-				loop: true
-			}
-		});
-	</script>
-
 	<script type="text/javascript" src="../static/js/app.js"></script>
-	<script id="dsq-count-scr" src="//translatr.disqus.com/count.js" async></script>
-	<script>
-		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-			ga('create', 'UA-43718849-2', 'auto');
-			ga('send', 'pageview');
-
-		</script>
-		<!-- Start Visual Website Optimizer Synchronous Code -->
-
-		<script type='text/javascript'>
-			var _vis_opt_account_id = 60781;
-			var _vis_opt_protocol = (('https:' == document.location.protocol) ? 'https://' : 'http://');
-			document.write('<s' + 'cript src="' + _vis_opt_protocol +
-			'dev.visualwebsiteoptimizer.com/deploy/js_visitor_settings.php?v=1&a='+_vis_opt_account_id+'&url='
-			+encodeURIComponent(document.URL)+'&random='+Math.random()+'" type="text/javascript">' + '<\/s' + 'cript>');
-		</script>
-
-		<script type='text/javascript'>
-			if(typeof(_vis_opt_settings_loaded) == "boolean") { document.write('<s' + 'cript src="' + _vis_opt_protocol +
-			'd5phz18u4wuww.cloudfront.net/vis_opt.js" type="text/javascript">' + '<\/s' + 'cript>'); }
-			// if your site already has jQuery 1.4.2, replace vis_opt.js with vis_opt_no_jquery.js above
-		</script>
-
-		<script type='text/javascript'>
-			if(typeof(_vis_opt_settings_loaded) == "boolean" && typeof(_vis_opt_top_initialize) == "function") {
-			        _vis_opt_top_initialize(); vwo_$(document).ready(function() { _vis_opt_bottom_initialize(); });
-			}
-		</script>
-		<!-- End Visual Website Optimizer Synchronous Code -->
 </body>
 </html>
