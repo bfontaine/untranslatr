@@ -3,7 +3,6 @@
 var app = angular.module('translatr', []);
 
 app.controller('translatrController', function ($scope, $http, $timeout) {
-	new Clipboard('.json-output');
 	$scope.locales = {
 		'af': 'Afrikaans',
 		'ar': 'Arabic',
@@ -105,7 +104,6 @@ app.controller('translatrController', function ($scope, $http, $timeout) {
       selectedLocales: {},
 		  isLangUagePanelExpandable: true,
     };
-		$scope.jsonFormattedOutput = [];
 
 		$('#text').focus();
 
@@ -135,7 +133,6 @@ app.controller('translatrController', function ($scope, $http, $timeout) {
 
 			$scope.errorText = '';
 			$scope.translatedText = {};
-			$scope.jsonFormattedOutput = [];
 			$scope.isFetchingData = true;
 
 			$scope.isPositive = true;
@@ -144,9 +141,6 @@ app.controller('translatrController', function ($scope, $http, $timeout) {
 				$scope.errorText = '';
 				$scope.isFetchingData = false;
 				$scope.translatedText = config.data.translatedText;
-				if ($scope.settings.isJsonFormattedOutput) {
-					$scope.generateJsonFormattedOutput($scope.translatedText);
-				}
 
 				$timeout(function () {
 					$('body, html').animate({scrollTop: document.getElementById('output').offsetTop}, 'slow');
@@ -161,18 +155,6 @@ app.controller('translatrController', function ($scope, $http, $timeout) {
 			;
 		};
 
-		$scope.generateJsonFormattedOutput = function (data) {
-			var jsonFormattedOutput = [];
-			angular.forEach(data, function (v, k) {
-				jsonFormattedOutput.push({
-					locale: k,
-					country: $scope.locales[k],
-					string: v,
-				});
-			});
-			$scope.jsonFormattedOutput = JSON.stringify(jsonFormattedOutput);
-		};
-
 		$scope.highlightTranslatedString = function (locale) {
 	        var range;
 	        if (document.selection) {
@@ -184,13 +166,6 @@ app.controller('translatrController', function ($scope, $http, $timeout) {
 	            range.selectNode(document.getElementById('selectedText-' + locale));
 	            window.getSelection().addRange(range);
 	        }
-	    };
-
-	    $scope.copyText = function () {
-	    	$scope.isTextCopied = true;
-	    	$timeout(function () {
-	    		$scope.isTextCopied = false;
-	    	}, 2000);
 	    };
 
 	    $scope.selectAll = function (e) {

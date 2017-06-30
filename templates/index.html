@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Untranslatr | Home</title>
+	<title>Untranslatr</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<link rel="shortcut icon" type="image/x-icon" href="{{ url_for("static", filename="images/favicon.ico") }}">
 	<meta name="theme-color" content="#2196F3">
@@ -9,9 +9,8 @@
 	<meta name="description" content="Translate from multiple languages at once">
 	<meta name="author" content="Baptiste Fontaine">
 
-	<link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="css/vendor/materialize.min.css") }}">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-	<link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="css/app.css") }}">
+	<link rel="stylesheet" href="{{ url_for("static", filename="css/vendor/materialize.min.css") }}">
+	<link rel="stylesheet" href="{{ url_for("static", filename="css/app.css") }}">
 </head>
 <body ng-app="translatr">
 	<div class="container" ng-controller="translatrController">
@@ -66,9 +65,8 @@
 
 					<div class="center margin-top margin-bottom">
 						<div class="text-lighten-1" stly="display:block" ng-class="{'red-text': !isPositive, 'blue-text': isPositive }">{{ errorText }}</div>
-						<input type="checkbox" id="json-formatted-output" ng-model="settings.isJsonFormattedOutput"/>
-						<label for="json-formatted-output" class="country-name">JSON-formatted output</label>
 						<br />
+				{% endraw %}
 						<div class="loader  hidden" style="text-align:center;">
 							<div class="preloader-wrapper big active">
 								<div class="spinner-layer spinner-blue-only">
@@ -86,35 +84,14 @@
 						</div>
 						<button class="btn waves-effect waves-light blue" type="submit" name="action" ng-class="{'btn-disabled  lighten-3': isFetchingData}" ng-disabled="isFetchingData">
 							Submit
-							<i class="material-icons" style="vertical-align: middle;"></i>
 						</button>
 					</div>
 				</form>
 
-				<!-- Output -->
-				<div ng-cloak ng-show="settings.isJsonFormattedOutput && jsonFormattedOutput.length">
-					<h5 class="blue-text  text-lighten-1" style="border-bottom: 1px solid #ccc;">JSON Formatted Output:</h5>
-					<textarea
-						ng-model="jsonFormattedOutput"
-						onclick="this.focus();this.select();"
-						style="margin-top:10px;padding:5px;"
-						rows="4"
-						readonly
-						id="jsonFormattedOutput"
-						width="85%">
-					</textarea>
-					<div style="position:relative;display:inline-block;top: -20px;left: -5px;">
-						<button class="btn waves-effect waves-light grey json-output" data-clipboard-target="#jsonFormattedOutput" ng-click="copyText()">Copy</button>
-						<div ng-show="isTextCopied">
-							<div class="arrow-up" style="top:25px;left:36px;"></div>
-							<div style="position:absolute;padding:5px;background:#444;color:#fff;border:1px solid #fff;top:50px;left:21px;border-radius: 5px;">Copied</div>
-						</div>
-					</div>
-				</div>
-
 				<h5 ng-cloak ng-show="translatedText" class="blue-text  text-lighten-1" style="margin-top:15px;border-bottom: 1px solid #ccc;">
 					Translated strings for the selected languages:
 				</h5>
+        {% raw %}
 				<div ng-cloak ng-show="translatedText && Object.keys(translatedText).length" style="background: #EEE; padding: 10px;">
 					<div id="output" ng-repeat="(locale, translatedString) in translatedText" class="margin-top">
 						<strong>{{ locales[locale] }}: </strong>
@@ -131,7 +108,6 @@
 
 	<script type="text/javascript" src="{{ url_for("static", filename="js/vendor/angular-1.4.min.js") }}"></script>
 
-	<script type="text/javascript" src="{{ url_for("static", filename="js/vendor/clipboard.min.js") }}"></script>
 	<script type="text/javascript" src="{{ url_for("static", filename="js/app.js") }}"></script>
 </body>
 </html>
