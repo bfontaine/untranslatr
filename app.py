@@ -6,19 +6,26 @@ Original code under MIT license (c) Varun Malhotra 2015-2017
 from flask import json, Flask, request, render_template
 
 import requests
+from bs4 import BeautifulSoup
 
 app = Flask(__name__)
 app.debug = True
 
-HEADERS = {'User-Agent':"Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.04506.30)"}
+HEADERS = {
+	"User-Agent": "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.04506.30)",
+}
 
-def translate(text_to_translate, to_language='auto', from_langage='auto'):
-	before_trans = 'class="t0">'
-	link = "http://translate.google.com/m?hl=%s&sl=%s&q=%s" % (to_language, from_langage, text_to_translate.replace(" ", "+"))
+def translate(text, to_language='auto', from_langage='auto'):
+	page = requests.get("http://translate.google.com/m", params={
+		"hl": to_language,
+		"sl": from_langage,
+		"q": text,
+	}, headers=HEADERS)
 
-	page = requests.get(link, headers=HEADERS).text
-	result = page[page.find(before_trans) + len(before_trans):]
-	return result.split("<", 1)[0]
+	soup = BeautifulSoup(page.text, "html.parser")
+	el = soup.select_one(".t0")
+	if el:
+		return el.text
 
 @app.route('/')
 def my_form():
