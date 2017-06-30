@@ -165,7 +165,7 @@ app.controller('translatrController', function ($scope, $http, $timeout) {
 
 			angular.forEach($scope.settings.selectedLocales, function (value, key) {
 				if (value) {
-					l.push({locale: key});
+					l.push(key);
 				}
 			});
 			$scope.isPositive = false;
@@ -194,7 +194,7 @@ app.controller('translatrController', function ($scope, $http, $timeout) {
 				$scope.errorText = '';
 				$scope.isFetchingData = false;
 				$scope.isStoredDataLoaded = true;
-				$scope.translatedText = config.data.translatedText.text;
+				$scope.translatedText = config.data.translatedText;
 				if ($scope.settings.isJsonFormattedOutput) {
 					$scope.generateJsonFormattedOutput($scope.translatedText);
 				}
