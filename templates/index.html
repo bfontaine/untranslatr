@@ -28,9 +28,7 @@
       </div>
 			<div class="col s12 m8 l9">
 				<form ng-cloak ng-submit="validateAndTranslate()">
-          {# Turn off jinja2 templating here #}
-					{% raw %}
-					<h4 class="center" style="color:#777;">Translate to multiple languages at once</h4>
+					<h4 class="center" style="color:#777;">Translate from multiple languages at once</h4>
 					<div style="margin-top:25px;">
 						<strong class="blue-text" style="margin-bottom:5px;font-size:24px;">Enter Text</strong>
 						<div class="row">
@@ -41,6 +39,8 @@
 						</div>
 					</div>
 
+          {# Turn off jinja2 templating here #}
+					{% raw %}
 					<div style="border: 1px solid #ddd;">
 						<div class="collapsible-header" ng-click="settings.isLangUagePanelExpandable = !settings.isLangUagePanelExpandable;">
 							<strong class="blue-text" style="margin-bottom:5px;font-size:24px;">Select Languages</strong>
@@ -120,7 +120,6 @@
 						<span ng-click="highlightTranslatedString(locale)" id="selectedText-{{ locale }}">{{ translatedString }}</span>
 					</div>
 				</div>
-
 				{% endraw %}
 			</div>
 		</div>
