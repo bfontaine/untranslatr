@@ -1,6 +1,3 @@
-'''
-Original code under MIT license (c) Varun Malhotra 2015-2017
-'''
 # -*- coding: utf-8 -*-
 
 from flask import json, Flask, request, render_template
