@@ -52,7 +52,7 @@
 
 						<div class="row  margin--top  padding-sides--15" ng-class="{'hidden': !settings.isLangUagePanelExpandable}">
 							<div class="col s12" style="margin-left:10px;">
-								<input id="search" type="search" ng-model="search" placeholder="Search countries..." style="text-align: center;" title="Filter the countries">
+								<input id="search" type="search" ng-model="search" placeholder="Search languages..." style="text-align: center;" title="Filter the languages">
 		        				<label for="search"></label>
 		        			</div>
 
@@ -112,7 +112,7 @@
 				</div>
 
 				<h5 ng-cloak ng-show="translatedText" class="blue-text  text-lighten-1" style="margin-top:15px;border-bottom: 1px solid #ccc;">
-					Translated strings for the selected countries:
+					Translated strings for the selected languages:
 				</h5>
 				<div ng-cloak ng-show="translatedText && Object.keys(translatedText).length" style="background: #EEE; padding: 10px;">
 					<div id="output" ng-repeat="(locale, translatedString) in translatedText" class="margin-top">
