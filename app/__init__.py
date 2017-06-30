@@ -29,7 +29,7 @@ def my_form_post():
 	params = json.loads(request.data)
 
 	text = params['userText']
-	texts = {lang: translate(text, lang) for lang in params["l"]}
+	texts = {lang: translate(text, "en", lang) for lang in params["l"]}
 
 	return json.dumps({'translatedText': texts})
 
